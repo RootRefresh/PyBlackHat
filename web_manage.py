@@ -7,11 +7,11 @@ import urllib2
 
 threads = 10
 
-target = 'http://wordpress-yang-wordpress.a3c1.starter-us-west-1.openshiftapps.com'
-directory ='/opt/app-root/src'
+# target = 'http://wordpress-yang-wordpress.a3c1.starter-us-west-1.openshiftapps.com'
+# directory ='/opt/app-root/src'
 
-# target = 'http://www.yangyangblog.cn'
-# directory ='/home/Blog/blog'
+target = 'http://192.168.3.25:8000/learn_django/'
+directory ='/Users/a1/Desktop/杨洋/OpenShift/testDjango/my_django/learn_django/templates'
 filters = ['.jpg','.gif','.png','.css']
 
 
@@ -28,11 +28,14 @@ for r,d,f in os.walk('.'):
             web_paths.put(remote_path)
 
 def test_remote():
+    print web_paths
     while not web_paths.empty():
         path = web_paths.get()
 
         url = '%s%s' % (target, path)
 
+        print 'url: '+url
+        print ''
         request = urllib2.Request(url)
 
         try:
